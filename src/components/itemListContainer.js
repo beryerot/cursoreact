@@ -1,10 +1,11 @@
+import React from "react";
 import "./itemListContainer.css"
 
-function itemListContainer(){
+const itemListContainer = ({text}) => {
 
     return(
         <div className="itemList">
-        <p>Este componente será un item list container</p>
+        <p>{text}</p>
         </div>
         )
 }

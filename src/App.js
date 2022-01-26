@@ -1,4 +1,5 @@
-import NavBar from './components/navbar'
+import React from "react";
+import NavBar from './components/navbar';
 import ItemListContainer from './components/itemListContainer';
 
 function App() {
@@ -6,7 +7,9 @@ function App() {
   return (
           <>
             <NavBar />
-            <ItemListContainer />
+            <ItemListContainer 
+            text="Soy un texto de prueba del Item List Container"
+            />
           </>
   )
 }
