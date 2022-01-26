@@ -1,0 +1,11 @@
+.itemList{
+    background-color: grey;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 3px;
+}
+
+.itemList p{
+    text-align: center;
+}

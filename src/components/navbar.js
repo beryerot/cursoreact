@@ -1,15 +1,15 @@
 import "./navbar.css"
-import logo from "./logo.png"
+import CartWidget from "./cartWidget"
 
 const NavBar = () => {
-    return <nav>
+    return <nav className="navBar">
         <ul>
             <li className="brand">Tienda de arte</li>
             <li><a href="#">Home</a></li>
             <li><a href="#">Productos</a></li>
             <li><a href="#">Servicios</a></li>
             <li><a href="#">Contacto</a></li>
-            <li className="brand"><img src={logo} width="20" ></img></li>
+            <li><CartWidget /></li>
         </ul>
     </nav>
 

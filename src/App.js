@@ -1,11 +1,14 @@
 import NavBar from './components/navbar'
+import ItemListContainer from './components/itemListContainer';
 
 function App() {
+  // 2. Use at the root of your app
   return (
-    <div className="App">
-      <NavBar></NavBar>
-    </div>
-  );
+          <>
+            <NavBar />
+            <ItemListContainer />
+          </>
+  )
 }
 
 export default App;
