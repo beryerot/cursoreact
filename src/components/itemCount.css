@@ -1,23 +1,28 @@
 .contador{
     display: flex;
-    background-color: none;
-    border: lightblue 4px solid;
-    border-radius: 3px;
     justify-content: center;
     flex-wrap: wrap;
-    height: 100px;
+    height: 150px;
     width: 150px;
     margin-left: auto;
     margin-right: auto;
 }
 
-button{
+.botonContador{
     background-color: white;
-    border-color: lightblue;
+    border-color: blue;
     border-radius: 3px;
-    color: lightblue;
+    color: blue;
     height: 30px;
+    margin: 2px;
+}
 
+.botonComprar{
+    color: white;
+    border-color: blue;
+    border-radius: 3px;
+    background-color: blue;
+    height: 30px;
 }
 
 .botonera{

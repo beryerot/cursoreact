@@ -12,20 +12,24 @@ const ItemCount = () => {
             alert("No hay más stock disponible")
         } ;
     };
-      function handlerCounterDown() {
+    function handlerCounterDown() {
         if (counter > 0){
         setCounter(counter - 1);
         } else{
             alert("La cantidad no puede ser menor a 0")
         }
     }
+    function comprar() {
+        alert("Todavía no se puede comprar")
+    }
       
   return <div className="contador">
-      <p>Cantidad de unidades: {counter}</p>
+      <p>Cantidad: {counter}</p>
       <div className="botonera">
-      <button onClick={handlerCounterUp}>+</button>
-      <button onClick={handlerCounterDown}>-</button>
+      <button onClick={handlerCounterUp} className='botonContador'>+</button>
+      <button onClick={handlerCounterDown} className='botonContador'>-</button>
       </div>
+      <button onClick={comprar} className='botonComprar'>Comprar</button>
     </div>;
 };
 
