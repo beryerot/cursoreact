@@ -3,7 +3,7 @@ import "./itemCount.css"
 
 const ItemCount = () => {
 
-    const [counter, setCounter] = useState(0);
+    const [counter, setCounter] = useState(1);
     const stock = 4
     function handlerCounterUp() {
         if (counter < stock){
@@ -13,10 +13,10 @@ const ItemCount = () => {
         } ;
     };
     function handlerCounterDown() {
-        if (counter > 0){
+        if (counter > 1){
         setCounter(counter - 1);
         } else{
-            alert("La cantidad no puede ser menor a 0")
+            alert("La cantidad no puede ser 0")
         }
     }
     function comprar() {
@@ -30,7 +30,7 @@ const ItemCount = () => {
       <button onClick={handlerCounterDown} className='botonContador'>-</button>
       </div>
       <button onClick={comprar} className='botonComprar'>Comprar</button>
-    </div>;
+    </div>
 };
 
 export default ItemCount;

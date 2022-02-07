@@ -7,21 +7,21 @@ import ItemCount from "./itemCount"
 
 const Item = ({ data }) => {
     return (
-        <Card style={{ margin: 40 }} sx={{ maxWidth: 345 }}>
+        <Card style={{ margin: 40 }} sx={{ height: 400, width: 300 }}>
             <CardContent>
-                <Typography gutterBottom variant='h5' component='div'>
-                    {data.login}
+                <Typography noWrap gutterBottom variant='h9' component='div'>
+                    {data.title}
                 </Typography>
 				<CardMedia
 					component='img'
 					height='180'
-					image={data.avatar_url}
-					alt={data.login}
+					image={data.image}
+					alt={data.title}
 				/>
             </CardContent>
             <ItemCount />
         </Card>
-    );
+    )
 };
 
 export default Item;
