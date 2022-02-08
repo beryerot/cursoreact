@@ -6,6 +6,7 @@ import Envios from './views/costo-de-envio';
 import Pagos from './views/formas-de-pago';
 import Error from './views/error';
 import ItemDetail from './views/itemDetail';
+import ItemCategory from "./views/itemCategory";
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
                 <Route path="/pagos" element={<Pagos />}/>
                 <Route path="*" element={<Error />}/>
                 <Route path="/detail/:id" element={<ItemDetail />}/>
+                <Route path="/category/:category_id" element={<ItemCategory />}/>
               </Routes>
             </Router>
           </>

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -14,10 +15,16 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link } from 'react-router-dom'
 import { grey } from '@mui/material/colors';
 
-
-const pages = ['Envíos', 'Pagos', 'Contacto'];
-
 const NavBar = () => {
+
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+      fetch('https://fakestoreapi.com/products/categories')
+          .then((response) => response.json())
+          .then((json) => setCategories(json));
+  }, []);
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   
 
@@ -72,9 +79,9 @@ const NavBar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+              {categories.map((category) => (
+                <MenuItem key={category} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{category}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -90,14 +97,16 @@ const NavBar = () => {
           </Typography>
           </Link>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            {categories.map((category) => (
+              <Link to ={`/category/${category}`}>
               <Button
-                key={page}
+                key={category}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                {category}
               </Button>
+              </Link>
             ))}
           </Box>
 

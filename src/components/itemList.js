@@ -5,13 +5,13 @@ import Spinner from  './spinner';
 import {Link} from 'react-router-dom';
 
 const ItemList = () => {
-    const [users, setUsers] = useState([]);
+    const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         fetch('https://fakestoreapi.com/products')
             .then((response) => response.json())
-            .then((json) => setUsers(json));
+            .then((json) => setItems(json));
             setTimeout(() => {
                 setIsLoading(false);
             }, 2000);
@@ -19,12 +19,12 @@ const ItemList = () => {
 
     return (
         <div className='bloque'>
-            {users.map((user) => {
+            {items.map((item) => {
                 return (
-                    <div key={user.id}>
+                    <div key={item.id}>
                         {isLoading ? <Spinner /> : 
-                        <Link to ={`/detail/${user.id}`}>
-                        <Item data={user} />
+                        <Link to ={`/detail/${item.id}`}>
+                        <Item data={item} />
                         </Link>}
                     </div>
                 )
