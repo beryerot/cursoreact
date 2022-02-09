@@ -4,6 +4,7 @@ import Item from '../components/item';
 import "../components/itemList.css";
 import {Link} from 'react-router-dom';
 import './itemDetail.css'
+import Typography from '@mui/material/Typography';
 
 const ItemCategory = () => {
 
@@ -18,7 +19,11 @@ const ItemCategory = () => {
 }, [category.category_id]);
 
 return (
-    <div className='bloque'>
+    <>
+    <Typography align="center" variant="overline" display="block" gutterBottom style={{margin: 25}}> 
+    {category.category_id}
+    </Typography>
+<div className='bloque'>
         {items.map((item) => {
             return (
                 <div key={item.id}>
@@ -32,6 +37,7 @@ return (
         })}
         
     </div>
+    </>
 );
 };
 

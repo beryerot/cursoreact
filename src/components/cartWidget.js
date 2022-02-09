@@ -1,12 +1,17 @@
 import React from "react";
-import cart from "./cart.png"
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { grey } from '@mui/material/colors';
 
 function cartWidget() {
     
         return (
-            <div>
-            <img src={cart} width="20" float="right" alt="cart"></img>
-            </div>
+            <Tooltip title="Todavía no se puede comprar">
+              <IconButton sx={{ p: 0 }}>
+              <ShoppingCartIcon sx={{ color: grey[50], marginLeft: 2 }} />
+              </IconButton>
+            </Tooltip>
         )
     
   }

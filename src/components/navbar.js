@@ -9,11 +9,9 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { Link } from 'react-router-dom'
-import { grey } from '@mui/material/colors';
+import { Link } from 'react-router-dom';
+import CartWidget from './cartWidget';
 
 const NavBar = () => {
 
@@ -81,7 +79,9 @@ const NavBar = () => {
             >
               {categories.map((category) => (
                 <MenuItem key={category} onClick={handleCloseNavMenu}>
+                  <Link to ={`/category/${category}`} style={{color: 'black', textDecoration: 'none'}}>
                   <Typography textAlign="center">{category}</Typography>
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>
@@ -91,18 +91,18 @@ const NavBar = () => {
             variant="h6"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
+            sx={{margin: '50', flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
           >
             Tienda de arte
           </Typography>
           </Link>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {categories.map((category) => (
-              <Link to ={`/category/${category}`}>
+              <Link to ={`/category/${category}`} style={{color: 'white', textDecoration: 'none'}}>
               <Button
                 key={category}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: 'white', display: 'block', }}
               >
                 {category}
               </Button>
@@ -111,12 +111,7 @@ const NavBar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-          
-            <Tooltip title="Todavía no se puede comprar">
-              <IconButton sx={{ p: 0 }}>
-              <ShoppingCartIcon sx={{ color: grey[50] }} />
-              </IconButton>
-            </Tooltip>
+          <CartWidget />
           </Box>
         </Toolbar>
       </Container>
