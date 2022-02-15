@@ -47,7 +47,7 @@ alt={item.title}
           {item.description}
       </Typography>
   </CardContent>
-  <ItemCount />
+  <ItemCount data={item}/>
   </Card>
   </div>
 )

@@ -98,7 +98,7 @@ const NavBar = () => {
           </Link>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {categories.map((category) => (
-              <Link to ={`/category/${category}`} style={{color: 'white', textDecoration: 'none'}}>
+              <Link to ={`/category/${category}`} style={{color: 'white', textDecoration: 'none'}} key={category}>
               <Button
                 key={category}
                 onClick={handleCloseNavMenu}
