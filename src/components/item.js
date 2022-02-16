@@ -22,6 +22,7 @@ const Item = ({ data }) => {
       </Typography>
             </CardContent>
         </Card>
+        
     )
 };
 

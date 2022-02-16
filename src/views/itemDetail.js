@@ -9,6 +9,8 @@ import './itemDetail.css'
 import {Link} from 'react-router-dom';
 
 
+
+
 const ItemDetail = () => {
 
   const [item, setItem] = useState([]);
@@ -47,7 +49,9 @@ alt={item.title}
           {item.description}
       </Typography>
   </CardContent>
-  <ItemCount data={item}/>
+  <ItemCount 
+  productID={item.id}
+  />
   </Card>
   </div>
 )

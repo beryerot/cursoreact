@@ -7,15 +7,15 @@ import Pagos from './views/formas-de-pago';
 import Error from './views/error';
 import ItemDetail from './views/itemDetail';
 import ItemCategory from "./views/itemCategory";
-
+import { CartProvider } from './context/cartContext'
 
 function App() {
 
   return (
           <>
+          <CartProvider>
             <Router>
             <NavBar />
-
               <Routes>
                 <Route path="/" element={<Home />}/>
                 <Route path="/cart" element={<Cart />}/>
@@ -25,6 +25,7 @@ function App() {
                 <Route path="/category/:category_id" element={<ItemCategory />}/>
               </Routes>
             </Router>
+            </CartProvider>
           </>
   )
 }
