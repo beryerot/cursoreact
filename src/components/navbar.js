@@ -11,7 +11,9 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
-import CartWidget from './cartWidget';
+import CartWidgetContainer from './cartWidgetContainer';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { grey } from '@mui/material/colors';
 
 const NavBar = () => {
 
@@ -91,7 +93,7 @@ const NavBar = () => {
             variant="h6"
             noWrap
             component="div"
-            sx={{margin: '50', flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
+            sx={{margin: '50', flexGrow: 1, display: { xs: 'flex', md: 'none' }, marginRight: '30px' }}
           >
             Tienda de arte
           </Typography>
@@ -111,7 +113,12 @@ const NavBar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-          <CartWidget />
+          <CartWidgetContainer />
+          </Box>
+          <Box sx={{ flexGrow: 0 }}>
+          <Link to="/cart">
+          <ShoppingCartIcon sx={{ color: grey[50], marginLeft: 1 }} />
+          </Link>
           </Box>
         </Toolbar>
       </Container>

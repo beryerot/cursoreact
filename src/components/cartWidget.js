@@ -1,19 +1,15 @@
 import React from "react";
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { grey } from '@mui/material/colors';
+import "./cartWidget.css";
 
-function cartWidget() {
+const CartWidget = ({totalUnits}) => {
     
-        return (
-            <Tooltip title="Todavía no se puede comprar">
-              <IconButton sx={{ p: 0 }}>
-              <ShoppingCartIcon sx={{ color: grey[50], marginLeft: 2 }} />
-              </IconButton>
-            </Tooltip>
+      
+  return (
+    <section>
+              {(totalUnits() === 0) ? null : <span className="cartWidget">{totalUnits()}</span>}
+    </section>
         )
     
   }
   
-  export default cartWidget;
+  export default CartWidget;

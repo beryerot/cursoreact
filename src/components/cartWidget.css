@@ -1,0 +1,11 @@
+.cartWidget{
+    height: 22px;
+    width: 22px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 50%;
+    background: white;
+    color: black;
+    margin-left: 5px;
+  }

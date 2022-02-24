@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {useParams} from 'react-router';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -7,13 +7,13 @@ import Typography from '@mui/material/Typography';
 import ItemCount from "../components/itemCount";
 import './itemDetail.css'
 import {Link} from 'react-router-dom';
-
+import { CartContext } from '../context/cartContext'
 
 
 
 const ItemDetail = () => {
-
-  const [item, setItem] = useState([]);
+  const { addProduct } = useContext(CartContext);
+  const [item, setItem] = useState({});
 
   let id = useParams();
   let itemID = id.id;
@@ -23,6 +23,7 @@ const ItemDetail = () => {
         .then((response) => response.json())
         .then((json) => setItem(json));
 }, [itemID]);
+
 
   return (
   <div className='ficha'>
@@ -49,9 +50,7 @@ alt={item.title}
           {item.description}
       </Typography>
   </CardContent>
-  <ItemCount 
-  productID={item.id}
-  />
+  <ItemCount data={item} addProduct={addProduct} />
   </Card>
   </div>
 )

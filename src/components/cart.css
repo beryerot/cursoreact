@@ -1,0 +1,7 @@
+.carritoList{
+    list-style-type: none;
+}
+
+.imagenList{
+    display: flex
+}
