@@ -1,9 +1,29 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import ItemList from './itemList';
 import Typography from '@mui/material/Typography';
 import "./itemListContainer.css"
 
-const itemListContainer = ({text}) => {
+import { db } from '../firebase/firebaseconfig';
+import { collection, query, getDocs } from "firebase/firestore";
+
+const ItemListContainer = ({text}) => {
+    const [items, setItems] = useState([]);
+
+  
+    useEffect(() => {
+  
+      const getItems = async () => {
+      const q = query(collection(db, "items"));
+      const docs = [];
+      const querySnapshot = await getDocs(q);
+          querySnapshot.forEach((doc) =>{
+        docs.push({...doc.data(), id: doc.id});
+      });
+      setItems(docs)
+      };
+      getItems();
+    }, [])
+    console.log(items)
 
     return(
         <>
@@ -12,10 +32,10 @@ const itemListContainer = ({text}) => {
         </Typography>
         <div className="itemList">
         <p>{text}</p>
-        <ItemList />
+        <ItemList items={items}/>
         </div>
         </>
         )
 }
 
-export default itemListContainer;
+export default ItemListContainer;

@@ -6,22 +6,36 @@ import {Link} from 'react-router-dom';
 import './itemDetail.css'
 import Typography from '@mui/material/Typography';
 
+import { db } from '../firebase/firebaseconfig';
+import { collection, query, getDocs, where } from "firebase/firestore";
+
 const ItemCategory = () => {
 
-  const [items, setItem] = useState([]);
+  const [items, setItems] = useState([]);
 
   let category = useParams();
+  let cat = category.category_id;
+  
 
   useEffect(() => {
-    fetch(`https://fakestoreapi.com/products/category/${category.category_id}`)
-        .then((response) => response.json())
-        .then((json) => setItem(json));
-}, [category.category_id]);
+  
+    const getItems = async () => {
+    const q = query(collection(db, "items") , where("category", "==", cat));
+    const docs = [];
+    const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) =>{
+      docs.push({...doc.data(), id: doc.id});
+    });
+    setItems(docs)
+    };
+    getItems();
+  }, [cat])
+  console.log(items)
 
 return (
     <>
     <Typography align="center" variant="overline" display="block" gutterBottom style={{margin: 25}}> 
-    {category.category_id}
+    {cat}
     </Typography>
 <div className='bloque'>
         {items.map((item) => {

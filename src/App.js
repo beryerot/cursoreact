@@ -7,7 +7,7 @@ import Pagos from './views/formas-de-pago';
 import Error from './views/error';
 import ItemDetail from './views/itemDetail';
 import ItemCategory from "./views/itemCategory";
-import { CartProvider } from './context/cartContext'
+import { CartProvider } from './context/cartContext';
 
 function App() {
 

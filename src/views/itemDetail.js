@@ -1,59 +1,59 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import {useParams} from 'react-router';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import ItemCount from "../components/itemCount";
 import './itemDetail.css'
-import {Link} from 'react-router-dom';
-import { CartContext } from '../context/cartContext'
+import ItemDetailCard from '../components/itemDetailCard';
+import Spinner from '../components/spinner'
 
-
+import {
+	collection,
+	query,
+	where,
+	getDocs,
+	documentId,
+} from 'firebase/firestore';
+import { db } from '../firebase/firebaseconfig';
 
 const ItemDetail = () => {
-  const { addProduct } = useContext(CartContext);
-  const [item, setItem] = useState({});
+  const [items, setItems] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
 
   let id = useParams();
   let itemID = id.id;
 
-  useEffect(() => {
-    fetch(`https://fakestoreapi.com/products/${itemID}`)
-        .then((response) => response.json())
-        .then((json) => setItem(json));
-}, [itemID]);
+	useEffect(() => {
+    
+		const getItems = async () => {
+			const q = query(
+				collection(db, 'items'),
+				where(documentId(), '==', itemID)
+			);
+			const docs = [];
+			const querySnapshot = await getDocs(q);
+			querySnapshot.forEach((doc) => {
+				docs.push({ ...doc.data(), id: doc.id });
 
+      });
+			setItems(docs);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 300);
+		};
+		getItems();
+	}, [itemID]);
 
-  return (
-  <div className='ficha'>
-  <Card style={{ margin: 40, width: 800 }} sx={{ height: 1000}}>
-  <CardContent>
-  <Link to ={`/category/${item.category}`}>
-  <Typography gutterBottom variant='p' component='p' style={{color: 'white', backgroundColor: 'grey'}}>
-          {item.category}
-      </Typography>
-      </Link>
-      <Typography gutterBottom variant='h4' component='div'>
-          {item.title}
-      </Typography>
-<CardMedia
-component='img'
-height='380'
-image={item.image}
-alt={item.title}
-/>
-<Typography gutterBottom variant='h6' component='div' align='justify' style={{ margin: 20}}>
-          Precio: ${item.price}
-      </Typography>
-<Typography gutterBottom variant='p' component='div' align='justify' style={{ margin: 20}}>
-          {item.description}
-      </Typography>
-  </CardContent>
-  <ItemCount data={item} addProduct={addProduct} />
-  </Card>
-  </div>
-)
+	return (
+		<div>
+			{isLoading ? (
+				<div className='spinner'>
+					<Spinner />
+				</div>
+			) : (
+				items.map((item) => {
+					return <ItemDetailCard item={item} key={itemID}/>;
+				})
+			)}
+		</div>
+	);
 };
 
 export default ItemDetail;

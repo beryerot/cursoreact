@@ -15,16 +15,32 @@ import CartWidgetContainer from './cartWidgetContainer';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { grey } from '@mui/material/colors';
 
+import { db } from '../firebase/firebaseconfig';
+import { collection, query, getDocs } from "firebase/firestore";
+
 const NavBar = () => {
 
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-      fetch('https://fakestoreapi.com/products/categories')
-          .then((response) => response.json())
-          .then((json) => setCategories(json));
-  }, []);
+    const getItems = async () => {
+      const q = query(collection(db, "items"));
+      const docs = [];
+      const querySnapshot = await getDocs(q);
+          querySnapshot.forEach((doc) =>{
+        docs.push({...doc.data()});
+      });
+      const arrCat = docs.map((item => {
+        return item.category
+    }))
+    const dataArr = new Set(arrCat);
+    let result = [...dataArr];
 
+      setCategories(result)
+      };
+      getItems();
+    }, [])
+    console.log(categories)
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   
 
@@ -37,7 +53,7 @@ const NavBar = () => {
   };
 
   return (
-    <AppBar position="sticky" style={{background: "black"}}>
+<AppBar position="sticky" style={{background: "black"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link to="/" style={{color: 'white', textDecoration: 'none'}}>
