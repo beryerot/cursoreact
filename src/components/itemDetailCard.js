@@ -9,7 +9,7 @@ import {Link} from 'react-router-dom';
 import { CartContext } from '../context/cartContext';
 
 const ItemDetail = ({ item }) => {
-  const { addProduct } = useContext(CartContext);
+  const { addProduct, products } = useContext(CartContext);
 
   return (
   <div className='ficha'>
@@ -36,7 +36,7 @@ alt={item.title}
           {item.description}
       </Typography>
   </CardContent>
-  <ItemCount data={item} addProduct={addProduct} />
+  <ItemCount data={item} addProduct={addProduct} cantidad={products} />
   </Card>
   </div>
 )

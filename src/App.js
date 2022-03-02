@@ -3,7 +3,7 @@ import NavBar from './components/navbar';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Home from './views/home';
 import CartContainer from './components/cartContainer';
-import Pagos from './views/formas-de-pago';
+import Shop from './views/shop';
 import Error from './views/error';
 import ItemDetail from './views/itemDetail';
 import ItemCategory from "./views/itemCategory";
@@ -19,7 +19,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />}/>
                 <Route path="/cart" element={<CartContainer />}/>
-                <Route path="/pagos" element={<Pagos />}/>
+                <Route path="/shop" element={<Shop />}/>
                 <Route path="*" element={<Error />}/>
                 <Route path="/detail/:id" element={<ItemDetail />}/>
                 <Route path="/category/:category_id" element={<ItemCategory />}/>

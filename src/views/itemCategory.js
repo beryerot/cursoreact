@@ -20,7 +20,7 @@ const ItemCategory = () => {
   useEffect(() => {
   
     const getItems = async () => {
-    const q = query(collection(db, "items") , where("category", "==", cat));
+    const q = query(collection(db, "items") , where("category", "==", cat), where("stock", ">=", 1));
     const docs = [];
     const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) =>{

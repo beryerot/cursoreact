@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import "./itemListContainer.css"
 
 import { db } from '../firebase/firebaseconfig';
-import { collection, query, getDocs } from "firebase/firestore";
+import { collection, query, getDocs, where } from "firebase/firestore";
 
 const ItemListContainer = ({text}) => {
     const [items, setItems] = useState([]);
@@ -13,7 +13,7 @@ const ItemListContainer = ({text}) => {
     useEffect(() => {
   
       const getItems = async () => {
-      const q = query(collection(db, "items"));
+      const q = query(collection(db, "items"), where("stock", ">=", 1));
       const docs = [];
       const querySnapshot = await getDocs(q);
           querySnapshot.forEach((doc) =>{

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import {useParams} from 'react-router';
 import './itemDetail.css'
 import ItemDetailCard from '../components/itemDetailCard';
-import Spinner from '../components/spinner'
+import Spinner from '../components/spinner';
+
 
 import {
 	collection,

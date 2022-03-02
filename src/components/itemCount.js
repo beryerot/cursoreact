@@ -3,13 +3,18 @@ import "./itemCount.css"
 /* import { Link } from 'react-router-dom' */
 
 
-const ItemCount = ({ data, addProduct }) => {
+const ItemCount = ({ data, addProduct, cantidad }) => {
+    
+    console.log("La cantidad es:", cantidad)
+    console.log("La data es:", data)
+    const newArray = cantidad.filter(function (el) {
+        return el.id === data.id
 
-
+      });
+    const checkStock = newArray[0];
     const [counter, setCounter] = useState(1);
-    const stock = 4
     function handlerCounterUp() {
-        if (counter < stock){
+        if (counter < data.stock){
         setCounter(counter + 1)
         } else {
             alert("No hay más stock disponible")
@@ -23,12 +28,17 @@ const ItemCount = ({ data, addProduct }) => {
         }
     }
     function setearTitulo(){
-        addProduct(data.id, counter, data.price, data.title, data.image)
-
+        
+        if (checkStock){
+            {(checkStock.cantidad + counter > data.stock) ? alert("no hay suficiente stock"): addProduct(data.id, counter, data.price, data.title, data.image, data.stock)}
+            } else 
+            addProduct(data.id, counter, data.price, data.title, data.image, data.stock)
     }
       
     return (
     <div className="contador">
+      {checkStock && <p className="unidadesCarrito">Unidades en el carrito: {checkStock.cantidad}</p>}
+      <p>Stock: {data.stock} unidades</p>
       <p>Cantidad: {counter}</p>
       <div className="botonera">
       <button onClick={handlerCounterUp} className='botonContador'>+</button>

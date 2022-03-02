@@ -8,7 +8,7 @@ const [products, setProducts] = useState(
 );
 const [total, setTotal] = useState(0);
 
-        const addProduct = (productID, cant, price, producto, image) => {
+        const addProduct = (productID, cant, price, producto, image, stock) => {
           const foundProduct = products.find(
             (product) =>  
             product.id === productID
@@ -16,7 +16,7 @@ const [total, setTotal] = useState(0);
           if (foundProduct) {
             foundProduct.cantidad += cant;
           } else {
-          products.push({ id: productID, cantidad: cant, precio: price, titulo: producto, subtotal: (price*cant), imagen: image });
+          products.push({ id: productID, cantidad: cant, precio: price, titulo: producto, subtotal: (price*cant), imagen: image, stock: stock });
           setProducts([...products]) }
           console.log(products)
           const newTotal = (total + cant)

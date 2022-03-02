@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { CartContext } from '../context/cartContext'
+import { CartContext } from '../context/cartContext';
 import { Link } from 'react-router-dom';
-import Cart from './cart'
+import Cart from './cart';
 
 const CartContainer = () => {
 
@@ -22,7 +22,7 @@ const CartContainer = () => {
         );
       })}
       {(totalUnits() === 0) ? <div><p style={{ textAlign: "center"}}>No hay productos en el carrito</p><Link to="/"><p style={{textAlign: "center"}}>Seguí buscando productos</p></Link></div> : <div style={{textAlign: "center"}}><p>Precio total: ${totalPrice().toFixed(2)}</p><p>Total de productos: {totalUnits()}</p>
-      <button onClick={() => deleteAllProducts()}>BORRAR TODO</button>
+      <button onClick={() => deleteAllProducts()}>VACIAR CARRITO</button><Link to="/shop"><button>TERMINAR COMPRA</button></Link>
       </div>
       }
     </section>
