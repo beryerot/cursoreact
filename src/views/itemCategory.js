@@ -30,9 +30,9 @@ const ItemCategory = () => {
     };
     getItems();
   }, [cat])
-  console.log(items)
 
 return (
+  
     <>
     <Typography align="center" variant="overline" display="block" gutterBottom style={{margin: 25}}> 
     {cat}

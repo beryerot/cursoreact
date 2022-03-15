@@ -23,7 +23,6 @@ const ItemListContainer = ({text}) => {
       };
       getItems();
     }, [])
-    console.log(items)
 
     return(
         <>

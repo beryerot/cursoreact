@@ -18,7 +18,6 @@ const [total, setTotal] = useState(0);
           } else {
           products.push({ id: productID, cantidad: cant, precio: price, titulo: producto, subtotal: (price*cant), imagen: image, stock: stock });
           setProducts([...products]) }
-          console.log(products)
           const newTotal = (total + cant)
           setTotal(newTotal)
         }

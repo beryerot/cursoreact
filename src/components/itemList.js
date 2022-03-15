@@ -4,17 +4,6 @@ import "./itemList.css";
 import {Link} from 'react-router-dom';
 
 const ItemList = ({items}) => {
-/*     const [items, setItems] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        fetch('https://fakestoreapi.com/products')
-            .then((response) => response.json())
-            .then((json) => setItems(json));
-            setTimeout(() => {
-                setIsLoading(false);
-            }, 2000);
-    }, []); */
 
     return (
         <div className='bloque'>

@@ -40,7 +40,6 @@ const NavBar = () => {
       };
       getItems();
     }, [])
-    console.log(categories)
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   
 
@@ -53,7 +52,7 @@ const NavBar = () => {
   };
 
   return (
-<AppBar position="sticky" style={{background: "black"}}>
+<AppBar position="sticky" style={{background: "black", marginBottom: "40px"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link to="/" style={{color: 'white', textDecoration: 'none'}}>
